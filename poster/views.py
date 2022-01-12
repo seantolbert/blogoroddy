@@ -5,7 +5,8 @@ from django.views import View
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from.models import Post
+from .models import Post
+from .forms import CommentForm
 
 # Create your views here.
 
@@ -39,12 +40,12 @@ class DetailView(View):
         post = Post.objects.get(slug=slug)
         context = {
             "post": post,
-            "post_tags": post.tag.all(),
+            "post_tags": post.tags.all(),
             "comment_form": CommentForm(),
             "comments": post.comments.all().order_by("-id"),
             "saved_for_later": self.is_stored_post(request, post.id),
         }
-        return render(request, "blog/details.html", context)
+        return render(request, "poster/details.html", context)
 
     def post(self, request, slug):
         comment_form = CommentForm(request.POST)
@@ -53,15 +54,15 @@ class DetailView(View):
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
-            return HttpResponseRedirect(reverse("post-detail", args=[slug]))
+            return HttpResponseRedirect(reverse("details", args=[slug]))
         context = {
             "post": post,
-            "post_tags": post.tag.all(),
+            "post_tags": post.tags.all(),
             "comment_form": CommentForm(),
             "comments": post.comments.all().order_by("-id"),
             "saved_for_later": self.is_stored_post(request, post.id),
         }
-        return render(request, "blog/details.html", context)
+        return render(request, "poster/details.html", context)
 
 class ReadLaterView(View):
     def get(self, request):
@@ -74,7 +75,7 @@ class ReadLaterView(View):
             posts = Post.objects.filter(id__in=stored_posts)
             context["posts"] = posts
             context["has_posts"] = True
-        return render(request, "blog/stored-posts.html", context)
+        return render(request, "poster/stored-posts.html", context)
 
     def post(self, request):
         stored_posts = request.session.get("stored_posts")

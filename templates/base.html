@@ -11,10 +11,10 @@
   </head>
   <body>
     <header>
-        <h1>Blog'o'Roddy</h1>
+        <h1><a href="{% url 'home' %}">Blog'o'Roddy</a></h1>
         <nav>
-            <a href="">Favorites</a>
-            <a href="">All Posts</a>
+            <a href="{% url 'read-later' %}">Favorites</a>
+            <a href="{% url 'index' %}">All Posts</a>
         </nav>
     </header>
     {% block content %}{% endblock content %}
