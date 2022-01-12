@@ -2,7 +2,7 @@
 {% load static %}
 
 
-{% block title %}My Blog{% endblock %} {% block content%}
+{% block title %}Blog'o'roddy{% endblock %} {% block content%}
 
 {% block css_files %}
 <link rel='stylesheet' href='{% static 'blog/partials/post.css' %}' />
@@ -12,29 +12,26 @@
 <section id="welcome">
   <header>
     <img src="{% static 'blog/images/sean.jpeg' %}" alt="Sean - the author" />
-    <h2>Sean's Blog</h2>
+    <h2>Welcome to Roddy's Blog.</h2>
   </header>
   <p>
-    Hey, My name is Sean and I love to talk about tech and the world. Please
-    keep reading and have a great life!!
+    ~probably some quote about evolution or sun exposure~
   </p>
 </section>
 <section id="latest-posts">
   <h2>My Latest Posts</h2>
   <ul>
     {% for post in posts %}
-      {% include 'blog/partials/post.html' %}
+      {% include 'poster/partials/post.html' %}
     {% endfor %}
   </ul>
 </section>
 <section id="about">
   <h2>What I Do</h2>
   <p>
-    I love programming, helping others, and expolring new tech possibilities
-  </p>
+I got shit to say! glad you are here to read it. I have a passion for occasionally beating my roomate in chess.  </p>
   <p>
-    My mission is to cmaintain steady growth as a developer and answer questions
-    for others on the same path
+    My mission is to make sure you are aware of my thoiughts and whatnot. At least that's this blog's mission
   </p>
 </section>
 {% endblock %}
