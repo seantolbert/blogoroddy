@@ -1,11 +1,10 @@
-from typing import List
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 from django.views import View
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Post
+from .models import Post, Author
 from .forms import CommentForm
 
 # Create your views here.
@@ -20,6 +19,12 @@ class HomePageView(ListView):
         queryset = super().get_queryset()
         data = queryset[:3]
         return data
+
+class AboutView(ListView):
+    template_name = "poster/about.html"
+    model = Author
+    context_object_name = "authors"
+    
 
 class IndexView(ListView):
     template_name = "poster/index.html"
@@ -89,3 +94,4 @@ class ReadLaterView(View):
             stored_posts.remove(post_id)
         request.session["stored_posts"] = stored_posts
         return HttpResponseRedirect("/")
+

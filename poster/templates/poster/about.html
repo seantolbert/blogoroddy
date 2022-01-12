@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}about{% endblock %}
+
+{% block content %}
+<h1>About Page</h1>
+<p>The creators of this content</p>
+<ul>
+    {% for author in authors %}
+        {% include 'poster/partials/author_card.html' %}
+    {% endfor %}
+</ul>
+{% endblock %}
