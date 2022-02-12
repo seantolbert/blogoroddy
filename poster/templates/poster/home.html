@@ -6,32 +6,37 @@
 
 {% block css_files %}
 <link rel='stylesheet' href='{% static 'poster/partials/post.css' %}' />
-<link rel='stylesheet' href='{% static 'poster/index.css' %}'>
+<link rel='stylesheet' href='{% static 'poster/home.css' %}'>
 {% endblock  %}
-
-<section id="welcome">
-  <header>
-    <img src="{% static 'poster/images/sean.png' %}" alt="Sean - the author" />
-    <h2>Welcome to Roddy's Blog.</h2>
-  </header>
-  <p>
-    ~probably some quote about evolution or sun exposure~
-  </p>
-</section>
-<section id="latest-posts">
-  <h2>My Latest Posts</h2>
-  <ul>
-    {% for post in posts %}
+<main>
+  <section class="headline">
+    <div class="headline__container">
+      <h2 class="headline__text">Welcome to The Blog 'o' Roddy</h2>
+    </div>
+  </section>
+  <section id="quote">
+    <div class="quote__container">
+      <p class="quote__text">
+        ~probably some quote about evolution or sun exposure~
+      </p>
+    </div>
+  </section>
+  <section id="latest-posts">
+    <h2>My Latest Posts</h2>
+    <ul>
+      {% for post in posts %}
       {% include 'poster/partials/post.html' %}
-    {% endfor %}
-  </ul>
-</section>
-<section id="about">
-  <h2>What I Do</h2>
-  <p>
-I got shit to say! glad you are here to read it. I have a passion for occasionally beating my roomate in chess.  </p>
-  <p>
-    My mission is to make sure you are aware of my thoiughts and whatnot. At least that's this blog's mission
-  </p>
-</section>
-{% endblock %}
+      {% endfor %}
+    </ul>
+  </section>
+  <section id="about">
+    <h2>What I Do</h2>
+    <p>
+      I got shit to say! glad you are here to read it. I have a passion for occasionally beating my roomate in chess.  </p>
+      <p>
+        My mission is to make sure you are aware of my thoiughts and whatnot. At least that's this blog's mission
+      </p>
+    </section>
+  </main>
+    {% endblock %}
+    
