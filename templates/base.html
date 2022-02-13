@@ -18,18 +18,16 @@
   </head>
   <body>
     <header>
-      <nav class="active">
+      <nav>
         <h1>Blog-O-Roddy</h1>
         <ul>
-          <li>home</li>
-          <li>about</li>
-          <li>read-later</li>
-          <li>all posts</li>
+          <li><a href="{% url 'home' %}">home</a></li>
+          <li><a href="{% url 'about' %}">about</a></li>
+          <li><a href="{% url 'read-later' %}">read later</a></li>
+          <li><a href="{% url 'index' %}">all posts</a></li>
         </ul>
-        <i class="fas fa-bars fa-2x"></i>
       </nav>
-
-
+      <div class="background"></div>
     </header>
     {% block content %}{% endblock content %}
   </body>
